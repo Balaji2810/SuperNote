@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .tabs {
+            display: flex;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background: #ccc;
+            cursor: pointer;
+        }
+        .active {
+            background: #4CAF50;
+            color: #fff;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+    <script src="./config.js"></script>
+    <script src="./connection.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" id="loginTab">Login</div>
+            <div class="tab" id="signupTab">Signup</div>
+        </div>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <form id="signupForm" style="display: none;">
+            <div class="form-group">
+                <input type="text" id="signupUsername" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="signupPassword" placeholder="Password" required>
+            </div>
+            <button type="submit">Signup</button>
+        </form>
+        <div class="error" id="errorMessage"></div>
+    </div>
+    <script src="./login.js"></script>
+</body>
+</html>

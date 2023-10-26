@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Note</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" />
+    <style>
+                
+        .dashboard > .tab-group {
+          display: flex;
+          align-items: center;
+        }
+        
+        .dashboard > .tab-group > .tab {
+          width: 50%;
+          box-shadow: 0px 0px 2px black inset;
+          background: lightgray;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .dashboard > .tab-group > .tab:first-child {
+          border-top-left-radius: 10px;
+        }
+        
+        .dashboard > .tab-group > .tab:last-child {
+          border-top-right-radius: 10px;
+        }
+        
+        .dashboard > .tab-group > .active {
+          background: white;
+          box-shadow: 0px 0px 2px black;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: center; */
+        }
+        
+        .card {
+          width: 200px;
+            height: 150px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin: 10px; /* Add margin for spacing between cards */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: right;
+            padding: 10px;
+        }
+
+        #logout-button {
+            background-color: #f00;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }.header {
+            background-color: #333;
+            color: #fff;
+            text-align: right;
+            padding: 10px;
+        }
+
+        #logout-button {
+            background-color: #f00;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .plus-button {
+            background-color: #3498db; /* Button background color */
+            color: #ffffff; /* Text color */
+            border: none; /* Remove button border */
+            border-radius: 50%; /* Make it a circle */
+            width: 50px; /* Adjust the width and height to your preference */
+            height: 50px;
+            font-size: 24px; /* Adjust font size for the plus sign */
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        .plus-button:hover {
+            background-color: #1f77c7; /* Change background color on hover */
+        }
+
+        .plus-button::before, .plus-button::after {
+            content: "";
+            position: absolute;
+            background-color: #ffffff; /* Color of the plus sign */
+            width: 2px; /* Adjust the size of the plus sign lines */
+            height: 24px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .plus-button::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Styles for the overlay background */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+    <script src="./config.js"></script>
+    <script src="./connection.js"></script>
+</head>
+<body>
+    <main class="dashboard">
+      <div class="header">
+          <button id="logout-button" onclick="logout()">Logout</button>
+      </div>
+        <div class="tab-group">
+            <span class="tab active" onclick="setActiveTab('my-notes')">My Notes</span>
+            <span class="tab" onClick="setActiveTab('shared-notes')">Notes Shared Me</span>
+        </div>
+        <div class="card-container" id="notes-list-a">
+            <button class="plus-button" onclick="showPopup()">+</button>
+            
+        </div>
+        <div class="card-container" id="notes-list-b" style="visibility: hidden;">
+          
+      </div>
+    </main>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h2>Enter a Name for the Note</h2>
+        <input type="text" id="noteName" placeholder="Name">
+        <button onclick="saveNote()">OK</button>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>

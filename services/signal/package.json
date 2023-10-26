@@ -1,0 +1,7 @@
+{
+    "type": "module",
+    "dependencies": {
+        "lib0": "^0.2.87",
+        "ws": "^8.14.2"
+    }
+}

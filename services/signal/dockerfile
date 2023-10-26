@@ -1,0 +1,21 @@
+FROM node:16
+
+# Create and set working directory
+WORKDIR /usr/src/app
+
+# install system dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gcc libev-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# copy project
+COPY . /usr/src/app/
+
+# Install pipenv and compile dependencies
+RUN npm install ws
+RUN npm install lib0
+
+
+# Specify the command to run on container start
+CMD ["node", "./server.js"]

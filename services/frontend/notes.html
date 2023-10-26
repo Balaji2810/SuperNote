@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>SuperNote</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" />
+    <script type="text/javascript" src="./dist/quill.bundle.js" async></script>
+    <link rel=stylesheet href="//cdn.quilljs.com/1.3.6/quill.snow.css" async
+    defer>
+    <link rel=stylesheet href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" async
+    defer>
+    <link rel=stylesheet href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" async
+    defer>
+    <style>
+      #editor {
+        min-height: 500px;
+      }
+      .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    /* Styles for the popup content */
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+    </style>
+    <script src="./config.js"></script>
+    <script src="./connection.js"></script>
+</head>
+<body>
+  <button type="button" onclick="window.location.href='/'">Back</button>
+  <button type="button" id="share-btn" onclick="openPopup()">Share</button>
+  <div id="namePopup" class="popup">
+    <div class="popup-content">
+      <h2>Select a User:</h2>
+        <div>
+          <datalist id="suggestions">
+              <option value="First option"></option>
+              <option value="Second Option"></option>
+          </datalist>
+          <input autoComplete="on" list="suggestions" id="autocomplete-input"/>
+      </div>
+      <button id="shareButton" onclick="shareName()">Share</button>
+      <button id="cancelButton" onclick="closePopup()">Cancel</button>
+    </div>
+  </div>
+  <script src="./notesLoads.js"></script>
+</body>
+</html>
